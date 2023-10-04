@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function AddTeam() {
 
@@ -26,6 +26,10 @@ export default function AddTeam() {
     }
 
   return (
+    <>
+    <div style={{margin:'20px'}}>
+    <Link className='bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-6 border border-green-700 rounded' to={`/`}>🔙 GO HOME</Link> 
+    </div>
     <div className='flex justify-center'> 
     <div className="w-full max-w-lg">
         <h1 className='text-2xl antialiased font-mono text-red-500 text-center mt-6'>ADD Your TEAM</h1>
@@ -84,5 +88,6 @@ export default function AddTeam() {
         </form>
     </div>
     </div>
+    </>
   )
 }

@@ -35,9 +35,12 @@ export default function TeamDetails() {
  
   return (
     <div className='bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600'>  
+        <div className='flex justify-between'>
+            <Link className='bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-6 border border-green-700 rounded' to={`/`}>🔙 GO HOME</Link> 
         <div className='flex justify-end pt-8'>
             <Link className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded' to={`/team/update/${location.state.team._id}`}>Update</Link>
             <Link className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded mx-12' onClick={deleteteam} to={'/deletedSuccessfully'}>Delete</Link> 
+        </div>
         </div>
         <div className='grid grid-cols-2 pb-28 pt-8'>
             <div className='flex justify-center'>
