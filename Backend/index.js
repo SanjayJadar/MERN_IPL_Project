@@ -18,9 +18,10 @@ server.use('/', require('./Routes/Player'));
 // Team
 server.use('/', require('./Routes/Team')); 
 
-//Connect Server
-server.listen(8080, ()=>{
-    console.log('Server Connected bro');
+//Connect Server 
+const port = process.env.PORT || 8000
+server.listen(port, ()=>{
+    console.log('Server Connected'+port);
 })
 
 
