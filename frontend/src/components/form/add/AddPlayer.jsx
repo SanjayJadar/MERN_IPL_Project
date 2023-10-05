@@ -24,7 +24,7 @@ export default function AddPlayer() {
           let third = data.price;
           let fourth = data.description;
           let fifth = data.playerImg;
-          await axios.post('http://ipl-tpw3.onrender.com/player/add', { first, second, third, fourth, fifth }, {withCredentials: true})
+          await axios.post('https://ipl-tpw3.onrender.com/player/add', { first, second, third, fourth, fifth })
           .then(res=>{  
               alert('Posted Successfully');
               navigate('/profile') 
@@ -40,7 +40,7 @@ export default function AddPlayer() {
     // Fetching api data for teams to show while adding player
     useEffect(()=>{
       const fetchData = async() => {
-          let api = await fetch('http://ipl-tpw3.onrender.com/teams')
+          let api = await fetch('https://ipl-tpw3.onrender.com/teams')
           api = await api.json()
           setTeams(api);
       }

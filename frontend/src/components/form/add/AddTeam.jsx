@@ -13,7 +13,7 @@ export default function AddTeam() {
 
     const onSubmit = async(e) => {
         e.preventDefault();
-        await fetch('http://ipl-tpw3.onrender.com/team/add',{
+        await fetch('https://ipl-tpw3.onrender.com/team/add',{
               method:'POST',
               body:JSON.stringify(data),
               headers:{

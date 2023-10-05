@@ -2,10 +2,7 @@ const express = require('express');
 const cors = require('cors'); 
 const DataBase = require('./database');                              // Database Connection
 const server = express();
-server.use(cors({
-    origin: '*', // Allow requests from any origin
-    credentials: true, // Allow credentials (cookies) to be sent with requests
-  }));
+server.use(cors());
 server.use(express.json());
 
 

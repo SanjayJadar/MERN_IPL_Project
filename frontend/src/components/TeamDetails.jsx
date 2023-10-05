@@ -14,7 +14,7 @@ export default function TeamDetails() {
     useEffect(()=>{
         const fetchApi = async() => {
             try{
-                let apiData = await axios.get('http://ipl-tpw3.onrender.com/players');  
+                let apiData = await axios.get('https://ipl-tpw3.onrender.com/players');  
                 setData(apiData.data.filter(item=>item.from.includes(location.state.team.shortName)));
             } catch(error){
                 console.log(error)
@@ -25,7 +25,7 @@ export default function TeamDetails() {
 
     const deleteteam = async() => { 
         
-            await fetch('http://ipl-tpw3.onrender.comlete/'+location.state.team._id, {
+            await fetch('https://ipl-tpw3.onrender.comlete/'+location.state.team._id, {
                 method: 'DELETE',
                 headers: {
                   'Content-Type': 'application/json'

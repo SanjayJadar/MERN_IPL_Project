@@ -6,7 +6,7 @@ export default function PlayerDetails() {
     const location = useLocation(); 
 
     const deletePlayer = async() => {
-        await fetch('http://ipl-tpw3.onrender.comdelete/'+location.state.player._id, {
+        await fetch('https://ipl-tpw3.onrender.comdelete/'+location.state.player._id, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json'

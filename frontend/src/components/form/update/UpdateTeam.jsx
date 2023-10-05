@@ -9,7 +9,7 @@ export default function UpdateTeam() {
     
   useEffect(()=>{
     const fetchData = async() =>{
-        let api = await fetch('http://ipl-tpw3.onrender.com/team/'+id)
+        let api = await fetch('https://ipl-tpw3.onrender.com/team/'+id)
         api = await api.json()
         setData(api); 
     }
@@ -22,7 +22,7 @@ export default function UpdateTeam() {
 
   const onSubmit = async(e) => {
     e.preventDefault(); 
-    await fetch('http://ipl-tpw3.onrender.com/team/update/'+id,{
+    await fetch('https://ipl-tpw3.onrender.com/team/update/'+id,{
       method:'PUT',
       body:JSON.stringify(data),
       headers:{ 
