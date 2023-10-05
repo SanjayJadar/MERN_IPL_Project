@@ -1,13 +1,12 @@
 import React from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 export default function PlayerDetails() {
 
-    const navigate = useNavigate();
     const location = useLocation(); 
 
     const deletePlayer = async() => {
-        await fetch('http://localhost:8080/player/delete/'+location.state.player._id, {
+        await fetch('http://ipl-tpw3.onrender.comdelete/'+location.state.player._id, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json'

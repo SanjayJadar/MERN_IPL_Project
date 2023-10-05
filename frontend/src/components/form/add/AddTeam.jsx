@@ -13,16 +13,14 @@ export default function AddTeam() {
 
     const onSubmit = async(e) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:8080/team/add',{
+        await fetch('http://ipl-tpw3.onrender.com/team/add',{
               method:'POST',
               body:JSON.stringify(data),
               headers:{
                 'Content-Type':'application/json'
               }
             })
-            navigate('/')
-            // const aaaa = await response.json();
-            // console.log(aaaa);
+            navigate('/') 
     }
 
   return (

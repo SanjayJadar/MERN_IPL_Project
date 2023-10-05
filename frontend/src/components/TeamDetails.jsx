@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
 
@@ -14,7 +14,7 @@ export default function TeamDetails() {
     useEffect(()=>{
         const fetchApi = async() => {
             try{
-                let apiData = await axios.get('http://localhost:8080/players');  
+                let apiData = await axios.get('http://ipl-tpw3.onrender.com/players');  
                 setData(apiData.data.filter(item=>item.from.includes(location.state.team.shortName)));
             } catch(error){
                 console.log(error)
@@ -25,7 +25,7 @@ export default function TeamDetails() {
 
     const deleteteam = async() => { 
         
-            await fetch('http://localhost:8080/team/delete/'+location.state.team._id, {
+            await fetch('http://ipl-tpw3.onrender.comlete/'+location.state.team._id, {
                 method: 'DELETE',
                 headers: {
                   'Content-Type': 'application/json'
@@ -58,7 +58,7 @@ export default function TeamDetails() {
             {data.map((item, index)=>{
                 return (
                     <div className='rounded bg-gradient-to-r from-purple-600 to-blue-600 my-10' style={{cursor:'pointer'}} key={index} onClick={()=>{ navigate('/teamDetails/playerDetails', {state:{player:item}}) }}>
-                        <img style={{height:'350px'}} src={item.playerImg} alt='Player Image'/>
+                        <img style={{height:'350px'}} src={item.playerImg} alt='Player Img'/>
                         <h3 className='text-xl font-sans my-4 text-white'>{item.playerName}</h3>
                     </div>
                 )

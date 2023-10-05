@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -17,21 +18,29 @@ export default function AddPlayer() {
     // Pass Player Data to Backend
     const onSubmit = async(e) => {
         e.preventDefault();
-        // console.log(data);
-        fetch('http://localhost:8080/player/add', {
-            method:'POST',
-            body:JSON.stringify(data),
-            headers:{
-              'Content-Type':'application/json'
-            }
-        })
-        navigate('/'); 
+        try {
+          let first = data.playerName;
+          let second = data.from;
+          let third = data.price;
+          let fourth = data.description;
+          let fifth = data.playerImg;
+          await axios.post('http://ipl-tpw3.onrender.com/player/add', { first, second, third, fourth, fifth }, {withCredentials: true})
+          .then(res=>{  
+              alert('Posted Successfully');
+              navigate('/profile') 
+          })
+          .catch(e=>console.log(e.message));
+          navigate('/');
+      } catch (error) {
+          // Handle errors here, e.g., show an error message to the user.
+          console.error('Error:', error);
+      }
     }
 
     // Fetching api data for teams to show while adding player
     useEffect(()=>{
       const fetchData = async() => {
-          let api = await fetch('http://localhost:8080/teams')
+          let api = await fetch('http://ipl-tpw3.onrender.com/teams')
           api = await api.json()
           setTeams(api);
       }

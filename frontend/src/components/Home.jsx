@@ -8,7 +8,7 @@ export default function Home() {
     const [data, setData] = useState([]);
 
     const fetchData = async() => {
-        let apiData = await fetch('http://localhost:8080/teams');
+        let apiData = await fetch('http://ipl-tpw3.onrender.com/teams');
         apiData = await apiData.json() 
         setData(apiData);
     }

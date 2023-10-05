@@ -2,8 +2,9 @@ const express = require('express');
 const cors = require('cors'); 
 const DataBase = require('./database');                              // Database Connection
 const server = express();
-server.use(express.json());
 server.use(cors());
+server.use(express.json());
+
 
 // Connect mongodb
 DataBase();
