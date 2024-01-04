@@ -6,26 +6,24 @@ import axios from 'axios';
 export default function TeamDetails() {
     const location = useLocation(); 
 
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
 
     const [data, setData] = useState([]); 
     
     
-    useEffect(()=>{
-        const fetchApi = async() => {
-            try{
-                let apiData = await axios.get('https://ipl-tpw3.onrender.com/players');  
-                setData(apiData.data.filter(item=>item.from.includes(location.state.team.shortName)));
-            } catch(error){
-                console.log(error)
-            }        
-        }
-        fetchApi();   
-    },[])
+    useEffect(() => {
+        const fetchApi = async () => { 
+              await axios.get('https://ipl-tpw3.onrender.com/players')
+              .then(apiData=> setData(apiData.data))
+              .catch(err=>console.log(err)) ;  
+            };
+             
+            fetchApi();   
+    }, []);  
 
     const deleteteam = async() => { 
         
-            await fetch('https://ipl-tpw3.onrender.comlete/'+location.state.team._id, {
+            await fetch('https://ipl-tpw3.onrender.com/team/delete/'+location.state.team._id, {
                 method: 'DELETE',
                 headers: {
                   'Content-Type': 'application/json'
@@ -55,13 +53,15 @@ export default function TeamDetails() {
             </div>
         </div>
         <div className='grid grid-cols-4 gap-20 mx-24'> 
-            {data.map((item, index)=>{
-                return (
-                    <div className='rounded bg-gradient-to-r from-purple-600 to-blue-600 my-10' style={{cursor:'pointer'}} key={index} onClick={()=>{ navigate('/teamDetails/playerDetails', {state:{player:item}}) }}>
-                        <img style={{height:'350px'}} src={item.playerImg} alt='Player Img'/>
-                        <h3 className='text-xl font-sans my-4 text-white'>{item.playerName}</h3>
-                    </div>
-                )
+            {data.map((item, index)=>{ 
+                if(item.from===location.state.team.shortName){
+                    return (
+                        <div className='rounded bg-gradient-to-r from-purple-600 to-blue-600 my-10' style={{cursor:'pointer'}} key={index} onClick={()=>{ navigate('/teamDetails/playerDetails', {state:{player:item}}) }}>
+                            <img style={{height:'350px'}} src={item.playerImg} alt='Player Img'/>
+                            <h3 className='text-xl font-sans my-4 text-white'>{item.playerName}</h3>
+                        </div>
+                    )
+                }
             })}
         </div>
     </div>

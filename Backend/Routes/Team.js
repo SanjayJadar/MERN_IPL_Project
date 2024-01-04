@@ -27,9 +27,7 @@ router.get('/team/:id', async(req, res)=>{
 // Update team details
 router.put('/team/update/:id', async(req, res)=>{
     let id = req.params.id;
-    await TeamCollection.findByIdAndUpdate({_id:id}, {
-        teamName : req.body.teamName,
-        shortName : req.body.shortName,
+    await TeamCollection.findByIdAndUpdate({_id:id}, { 
         teamLogo : req.body.teamLogo,
         topBatsman : req.body.topBatsman,
         topBowler : req.body.topBowler,

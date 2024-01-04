@@ -12,15 +12,25 @@ export default function AddTeam() {
     }
 
     const onSubmit = async(e) => {
-        e.preventDefault();
+      e.preventDefault();
+      try { 
         await fetch('https://ipl-tpw3.onrender.com/team/add',{
-              method:'POST',
-              body:JSON.stringify(data),
-              headers:{
-                'Content-Type':'application/json'
-              }
-            })
-            navigate('/') 
+          method:'POST',
+          body:JSON.stringify(data),
+          headers:{
+            'Content-Type':'application/json'
+          }
+        })
+        .then(res=>{  
+            alert('Posted Successfully');
+            navigate('/profile') 
+        })
+        .catch(e=>console.log(e.message));
+        navigate('/');
+    } catch (error) {
+        // Handle errors here, e.g., show an error message to the user.
+        console.error('Error:', error);
+    }
     }
 
   return (

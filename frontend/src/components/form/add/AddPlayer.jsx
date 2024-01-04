@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -18,13 +17,14 @@ export default function AddPlayer() {
     // Pass Player Data to Backend
     const onSubmit = async(e) => {
         e.preventDefault();
-        try {
-          let first = data.playerName;
-          let second = data.from;
-          let third = data.price;
-          let fourth = data.description;
-          let fifth = data.playerImg;
-          await axios.post('https://ipl-tpw3.onrender.com/player/add', { first, second, third, fourth, fifth })
+        try { 
+          await fetch('https://ipl-tpw3.onrender.com/player/add',{
+            method:'POST',
+            body:JSON.stringify(data),
+            headers:{
+              'Content-Type':'application/json'
+            }
+          })
           .then(res=>{  
               alert('Posted Successfully');
               navigate('/profile') 

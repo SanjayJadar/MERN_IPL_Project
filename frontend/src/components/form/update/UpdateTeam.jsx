@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 export default function UpdateTeam() {
 
   const {id} = useParams();
-  const [data, setData] = useState({teamName:'',  shortName:'', teamLogo:'',topBatsman:'', topBowler:'', championshipWonCount:''});
+  const [data, setData] = useState({teamLogo:'',topBatsman:'', topBowler:'', championshipWonCount:''});
   const navigate = useNavigate();
     
   useEffect(()=>{
@@ -41,19 +41,6 @@ export default function UpdateTeam() {
         <div className="w-full max-w-lg">
             <h1 className='text-2xl antialiased font-mono text-red-500 text-center mt-6'>ADD Your TEAM</h1>
             <form className="bg-white shadow-md rounded px-20 pt-10 pb-12 mb-4 mt-6" onSubmit={onSubmit}>
-                <div className="mb-4">
-                  <label className="block text-gray-700 text-sm font-bold mb-2 mt-4 text-left" htmlFor="teamName">
-                    Team Name
-                  </label>
-                  <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  required type="text" name='teamName' value={data.teamName} onChange={onChange}/>
-                </div>
-    
-                <div className="mb-4">
-                  <label className="block text-gray-700 text-sm font-bold mb-2 mt-10 text-left" htmlFor="shortName">
-                    Team in Short
-                  </label>
-                  <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  required type="text" name='shortName' value={data.shortName} onChange={onChange}/>
-                </div>
     
                 <div className="mb-4">
                   <label className="block text-gray-700 text-sm font-bold mb-2 mt-10 text-left" htmlFor="teamLogo">
